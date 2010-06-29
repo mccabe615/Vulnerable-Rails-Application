@@ -1,0 +1,49 @@
+<h2>vulnerable ruby on rails 3 web app</h2>
+
+<ul>
+  <li>XSS</li>
+  <li>CSRF</li>
+  <li>Directory Traversal</li>
+  <li>Injection (clue: mass assignment)</li>
+  <li>Privilege escalation</li>
+  <li>Allows blank passwords</li>
+  <li>Login via clear text</li>
+</ul>
+
+<%= form_for :rider do |form| %>
+  To be a cool rider, you need an account, do it:<br />
+  name: <%= form.text_field :name %><br />
+  pass: <%= form.password_field :password %><br />
+  <%= submit_tag "Create new account" %>
+<% end %>
+
+<p>
+my list of happy riders:<br />
+<% for rider in @riders %>
+  <%= rider.name %> (do you have admin privs yet? 
+  <% if rider.admin == 1 %>
+    <b>YES</b>
+  <% else %>
+    <b>NO</b>
+  <% end %>)
+  <% unless rider.comments.empty? %>
+    <br />
+    here is what people said about you:<br />
+	  <% for comment in rider.comments %>
+	     <%= raw comment.comment %><br />
+	  <% end %>
+  <% end %>
+  <%= link_to "Say something nasty about #{rider.name}", new_rider_comment_url(rider) %> <br />
+<% end %>
+</p>
+
+Previous riders uploaded files, type the name of the one you want and get a copy:
+
+<%= form_tag 'download' do |form| %>
+  <%= text_field_tag :filename %>
+  <%= submit_tag "download file" %>
+<% end %>
+
+<% if session[:rider_id] %><br />
+  You are an ADMIN!
+<% end %>

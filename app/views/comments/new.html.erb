@@ -1,0 +1,5 @@
+<% form_for [@rider, @comment] do |form| %>
+<h2>Write it: 
+<%= form.text_area :comment, :rows => 3 %></h2>
+<%= submit_tag "Post it" %>
+<% end %>
