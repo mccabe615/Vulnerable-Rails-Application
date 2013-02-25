@@ -20,7 +20,7 @@ class RidersController < ApplicationController
   end
   
   def download 
-    send_file ('/Volumes/data/Users/tate/' + params[:filename])
+    send_file ('./' + params[:filename])
   end
   
   def edit

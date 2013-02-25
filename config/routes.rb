@@ -1,4 +1,4 @@
-Loveme::Application.routes.draw do |map|
+Loveme::Application.routes.draw do
   match "admin/login", :to => 'admin#login'
   get "admin/logout"
   get "admin/index"
