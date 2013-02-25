@@ -7,6 +7,12 @@ gem 'rails'
 
 gem 'sqlite3-ruby'
 
+gem "twitter-bootstrap-rails"
+
+gem "therubyracer"
+gem "less-rails"
+
+gem 'jquery-rails'
 # Use unicorn as the web server
 # gem 'unicorn'
 
